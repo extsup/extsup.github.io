@@ -1,245 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-  <title>extsup Extensions</title>
-  <style>
-    :root {
-      --bg1: #050816;
-      --bg2: #0f172a;
-      --card: rgba(17, 24, 39, 0.72);
-      --border: rgba(255, 255, 255, 0.10);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --accent2: #22c55e;
-      --facebook: #1877f2;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-    }
-
-    body {
-      position: fixed;
-      inset: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 28%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-      display: grid;
-      place-items: center;
-      padding: 16px;
-      overscroll-behavior: none;
-      touch-action: manipulation;
-    }
-
-    .wrap {
-      width: min(100%, 440px);
-      position: relative;
-    }
-
-    .glow {
-      position: absolute;
-      inset: -60px;
-      border-radius: 999px;
-      filter: blur(55px);
-      opacity: 0.45;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 60%);
-      z-index: -1;
-    }
-
-    .card {
-      width: 100%;
-      padding: clamp(20px, 5vw, 32px);
-      border: 1px solid var(--border);
-      background: var(--card);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #bae6fd;
-      border: 1px solid rgba(56, 189, 248, 0.20);
-      font-size: 13px;
-      letter-spacing: 0.2px;
-      margin-bottom: 18px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent2);
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
-      flex: 0 0 auto;
-      animation: blink 1.2s infinite ease-in-out;
-    }
-
-    @keyframes blink {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
-      }
-      50% {
-        opacity: 0.35;
-        transform: scale(0.85);
-        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0.06);
-      }
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(24px, 7vw, 34px);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-    }
-
-    .desc {
-      margin: 14px 0 22px;
-      color: var(--muted);
-      font-size: clamp(14px, 4vw, 16px);
-      line-height: 1.6;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      text-decoration: none;
-      padding: 15px 18px;
-      border-radius: 16px;
-      font-weight: 800;
-      color: #00111a;
-      background: linear-gradient(135deg, #7dd3fc, #38bdf8);
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.28);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-      border: 0;
-      user-select: none;
-    }
-
-    .btn:active {
-      transform: scale(0.99);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 36px rgba(56, 189, 248, 0.34);
-        filter: brightness(1.03);
-      }
-    }
-
-    .social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      margin-top: 30px;
-      text-decoration: none;
-      padding: 11px 15px;
-      border-radius: 16px;
-      font-weight: 700;
-      color: #eaf2ff;
-      background: rgba(24, 119, 242, 0.14);
-      border: 1px solid rgba(24, 119, 242, 0.28);
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-      user-select: none;
-    }
-
-    .social:active {
-      transform: scale(0.99);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .social:hover {
-        transform: translateY(-2px);
-        background: rgba(24, 119, 242, 0.2);
-        box-shadow: 0 12px 24px rgba(24, 119, 242, 0.18);
-      }
-    }
-
-    .fb-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #1877f2;
-      flex: 0 0 auto;
-      box-shadow: 0 8px 18px rgba(24, 119, 242, 0.25);
-    }
-
-    .fb-icon jpg {
-      width: 15px;
-      height: 15px;
-      fill: #ffffff;
-      display: block;
-    }
-
-    .social-text {
-      line-height: 1;
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        border-radius: 20px;
-      }
-
-      .btn,
-      .social {
-        padding: 14px 16px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="glow"></div>
-
-    <div class="card">
-      <div class="badge">
-        <span class="dot"></span>
-        Repo Installer
-      </div>
-
-      <h1>extsup Extensions</h1>
-      <p class="desc">Repo dari extsup.</p>
-
-      <a class="btn" href="tachiyomi://add-repo?url=https://raw.githubusercontent.com/extsup/extensions/repo/index.min.json">
-        Tambah Repo
-      </a>
-
-      <a class="social" href="<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -254,9 +13,8 @@
       --border: rgba(255, 255, 255, 0.10);
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --accent: #38bdf8;
       --accent2: #22c55e;
-      --facebook: #1877f2;
+      --fb: #1877f2;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     }
 
@@ -265,28 +23,31 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html,
-    body {
+    html {
       width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
+      min-height: 100%;
     }
 
     body {
-      position: fixed;
-      inset: 0;
+      margin: 0;
+      min-height: 100svh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
         radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.16), transparent 28%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
-      display: grid;
-      place-items: center;
-      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:
+        calc(16px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-right))
+        calc(16px + env(safe-area-inset-bottom))
+        calc(16px + env(safe-area-inset-left));
+      overflow-x: hidden;
+      overflow-y: auto;
       overscroll-behavior: none;
-      touch-action: manipulation;
     }
 
     .wrap {
@@ -369,24 +130,29 @@
       line-height: 1.6;
     }
 
-    .btn {
+    .btn,
+    .social {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       text-decoration: none;
+      user-select: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, background 0.18s ease;
+    }
+
+    .btn {
       padding: 15px 18px;
       border-radius: 16px;
       font-weight: 800;
       color: #00111a;
       background: linear-gradient(135deg, #7dd3fc, #38bdf8);
       box-shadow: 0 12px 30px rgba(56, 189, 248, 0.28);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
       border: 0;
-      user-select: none;
     }
 
-    .btn:active {
+    .btn:active,
+    .social:active {
       transform: scale(0.99);
     }
 
@@ -399,31 +165,20 @@
     }
 
     .social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 10px;
-      width: 100%;
-      margin-top: 30px;
-      text-decoration: none;
+      margin-top: 18px;
       padding: 11px 15px;
       border-radius: 16px;
       font-weight: 700;
       color: #eaf2ff;
       background: rgba(24, 119, 242, 0.14);
       border: 1px solid rgba(24, 119, 242, 0.28);
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-      user-select: none;
-    }
-
-    .social:active {
-      transform: scale(0.99);
     }
 
     @media (hover: hover) and (pointer: fine) {
       .social:hover {
         transform: translateY(-2px);
-        background: rgba(24, 119, 242, 0.2);
+        background: rgba(24, 119, 242, 0.20);
         box-shadow: 0 12px 24px rgba(24, 119, 242, 0.18);
       }
     }
@@ -435,16 +190,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #1877f2;
+      background: var(--fb);
       flex: 0 0 auto;
       box-shadow: 0 8px 18px rgba(24, 119, 242, 0.25);
+      overflow: hidden;
     }
 
-    .fb-icon jpg {
-      width: 15px;
-      height: 15px;
-      fill: #ffffff;
+    .fb-icon img {
+      width: 16px;
+      height: 16px;
       display: block;
+      object-fit: contain;
     }
 
     .social-text {
@@ -481,8 +237,8 @@
       </a>
 
       <a class="social" href="fb://profile/100001893110585">
-       FB:  <span class="fb-icon" aria-hidden="true">
-          <img src="favicon-16x16.png">
+        <span class="fb-icon" aria-hidden="true">
+          <img src="favicon-16x16.png" alt="">
         </span>
         <span class="social-text">Sup Kelelawar</span>
       </a>
